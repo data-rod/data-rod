@@ -12,13 +12,13 @@ permalink:        pretty
 # Setup
 title:            Spatial Data Forest
 tagline:          'Data Analysis'
-description:      'Analise de dados voltada para Ciências Florestais.'
-url:              http://hyde.getpoole.com
+description:      'Analise de dados espaciais em Ciências Florestais.'
+url:              https://github.com/data-rod/data-rod
 baseurl:          /data-rod/
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Rodrigo Neto'
+  url:            https://twitter.com/data.rod
 
 paginate:         5
 
@@ -26,4 +26,18 @@ paginate:         5
 version:          2.1.0
 
 github:
-  repo:           https://github.com/poole/hyde
+  repo:           https://github.com/data-rod/data-rod
+
+collections:
+  blog:
+    output: true
+    permalink: blog/:year/:month/:day/:name/
+  projetos:
+    output: true
+    permalink: projetos/:name/
+  tutoriais:
+    output: true
+    permalink: tutoriais/:name/
+  sobre:
+    output: true
+    permalink: sobre/:name/
