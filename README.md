@@ -3,7 +3,7 @@
 
 # Rodrigo
 
-Hello! I'm Rodrigo, a forest engineering Ph.D. student with a focus on remote sensing and environmental analysis. I'm interested in developing complex models for geospatial data analysis, such as the Random Forest model, and exploring advanced geoprocessing techniques.
+Hello! I'm a forest engineering Ph.D. student with a focus on remote sensing and environmental analysis. I'm interested in developing complex models for geospatial data analysis, such as the Random Forest model, and exploring advanced geoprocessing techniques.
 
 ## Education
 - Ph.D. in Forest Science - (ongoing)
