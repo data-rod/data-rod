@@ -11,5 +11,61 @@
       {{ content }}
     </div>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("audio");
+        const playPauseButton = document.getElementById("play-pause");
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+  
+        const tracks = [
+          "{{ site.baseurl }}/assets/audio/track1.mp3",
+          "{{ site.baseurl }}/assets/audio/track2.mp3",
+          "{{ site.baseurl }}/assets/audio/track3.mp3",
+          "{{ site.baseurl }}/assets/audio/track4.mp3",
+          "{{ site.baseurl }}/assets/audio/track5.mp3",
+        ];
+        
+        let currentTrack = 0;
+  
+        playPauseButton.addEventListener("click", function() {
+          if (audio.paused) {
+            audio.play();
+            playPauseButton.textContent = "Pause";
+          } else {
+            audio.pause();
+            playPauseButton.textContent = "Play";
+          }
+        });
+  
+        prevButton.addEventListener("click", function() {
+          if (currentTrack > 0) {
+            currentTrack--;
+          } else {
+            currentTrack = tracks.length - 1;
+          }
+          audio.src = tracks[currentTrack];
+          audio.play();
+          playPauseButton.textContent = "Pause";
+        });
+  
+        nextButton.addEventListener("click", function() {
+          if (currentTrack < tracks.length - 1) {
+            currentTrack++;
+          } else {
+            currentTrack = 0;
+          }
+          audio.src = tracks[currentTrack];
+          audio.play();
+          playPauseButton.textContent = "Pause";
+        });
+  
+        // Auto play on the index page
+        if (window.location.pathname === "{{ site.baseurl }}/" && !audio.paused) {
+          audio.play();
+          playPauseButton.textContent = "Pause";
+        }        
+      });
+    </script>
   </body>
 </html>

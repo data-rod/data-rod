@@ -2,7 +2,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <div class="profile-picture">
-        <img src="{{ site.baseurl }}public/images/profileImage.jpg" alt="Sua Foto">  
+        <img src="{{ site.baseurl }}/public/images/profileImage.jpg" alt="Sua Foto">  
       </div>
       <h1>
         <a href="{{ site.baseurl }}">
@@ -13,17 +13,35 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item{% if page.url == '/data-rod/sobre/' %} active{% endif %}" href="{{ site.baseurl }}sobre/">Sobre</a>
-      <a class="sidebar-nav-item{% if page.url == '/data-rod/projetos/' %} active{% endif %}" href="{{ site.baseurl }}projetos/">Projetos</a>
-      <a class="sidebar-nav-item{% if page.url == '/data-rod/tutoriais/' %} active{% endif %}" href="{{ site.baseurl }}tutoriais/">Tutoriais</a>
-      <a class="sidebar-nav-item{% if page.url == '/data-rod/blog/' %} active{% endif %}" href="{{ site.baseurl }}blog/">Blog</a>
-
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
-      <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+      <a class="sidebar-nav-item{% if page.url == '/data-rod/sobre/' %} active{% endif %}" href="{{ site.baseurl }}/sobre/">Sobre</a>
+      <a class="sidebar-nav-item{% if page.url == '/data-rod/projetos/' %} active{% endif %}" href="{{ site.baseurl }}/projetos/">Projetos</a>
+      <a class="sidebar-nav-item{% if page.url == '/data-rod/tutoriais/' %} active{% endif %}" href="{{ site.baseurl }}/tutoriais/">Tutoriais</a>
+      <a class="sidebar-nav-item{% if page.url == '/data-rod/blog/' %} active{% endif %}" href="{{ site.baseurl }}/blog/">Blog</a>
     </nav>
 
+    <div class="social-media">
+      <a href="mailto:britonetorl@gmail.com" class="social-media-icon">
+        <img src="{{ site.baseurl }}/assets/icons/email-icon.png" alt="Email">
+      </a>
+      <a href="https://x.com/data_rod" class="social-media-icon">
+        <img src="{{ site.baseurl }}/assets/icons/twitter-icon.png" alt="Twitter">
+      </a>
+      <a href="https://www.instagram.com/data.rod" class="social-media-icon">
+        <img src="{{ site.baseurl }}/assets/icons/instagram-icon.png" alt="Instagram">
+      </a>
+      <a href="https://github.com/data-rod" class="social-media-icon">
+        <img src="{{ site.baseurl }}/assets/icons/github-icon.png" alt="GitHub">
+      </a>
+    </div>
 
-    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+    <div class="audio-player">
+      <audio id="audio" src="{{ site.baseurl }}/assets/audio/track1.mp3"></audio>
+      <div class="controls">
+        <button id="prev" class="audio-button">Prev</button>
+        <button id="play-pause" class="audio-button">Play</button>
+        <button id="next" class="audio-button">Next</button>
+      </div>
+    </div>
+    
   </div>
 </div>

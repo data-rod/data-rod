@@ -131,6 +131,58 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+
+/* Social Media Icons */
+.social-media {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.social-media-icon {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.social-media-icon img {
+  width: 24px; /* Ajuste o tamanho conforme necessário */
+  height: 24px; /* Ajuste o tamanho conforme necessário */
+  filter: brightness(0) invert(1); /* Para que os ícones sejam brancos */
+}
+
+.social-media-icon:hover img,
+.social-media-icon:focus img {
+  filter: brightness(0.7) invert(1); /* Efeito de hover */
+}
+
+/* Audio Player */
+.audio-player {
+  text-align: center;
+  margin-top: auto;
+  padding: 1rem 0;
+  background-color: #09311d;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.audio-button {
+  background-color: #fff;
+  border: none;
+  color: #09311d;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.audio-button:hover,
+.audio-button:focus {
+  background-color: #f1f1f1;
+}
+
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
