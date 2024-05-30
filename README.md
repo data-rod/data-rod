@@ -10,10 +10,6 @@ Hello! I'm a forest engineering Ph.D. student with a focus on remote sensing and
 - M.Sc. in Forest Science
 - B.Sc. in Forest Engineering 
 
-## Professional Experience
-- Research Intern at the National Institute of Amazonian Research (INPA)
-- Forest Engineering Intern at the Brazilian Agricultural Research Corporation (EMBRAPA)
-
 ## Projects
 - **Geospatial Data Modeling:** Developing model for analyzing land use patterns in forested areas.
 - **Analysis of Forest Habitat Persistence:** Study on the persistence of forest habitats in temporal series of satellite images.
