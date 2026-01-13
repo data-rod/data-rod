@@ -1,7 +1,7 @@
 
 ---
 
-Hello! I'm a forest engineering Ph.D. student with a focus on remote sensing and environmental analysis. I'm interested in developing complex models for geospatial data analysis, such as the Random Forest model, and exploring advanced geoprocessing techniques.
+Forest engineering, Ph.D. with a focus on remote sensing and environmental analysis. I'm interested in developing models for geospatial data analysis and natural landscapes management.
 
 ## Education
 - Ph.D. in Forest Science 
