@@ -298,3 +298,48 @@ code, pre {
   font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
   font-size: 0.9em;
 }
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM - ORGANIC TECH
+   ========================================================================== */
+
+/* Corpo do texto: Lora para leitura confortável e acadêmica */
+html, body, p, li, .post-date, .related-posts small {
+  font-family: 'Lora', serif;
+  line-height: 1.75; /* Respiro aumentado para elegância */
+}
+
+/* Títulos e Interface: Montserrat para modernidade e precisão */
+h1, h2, h3, h4, h5, h6, 
+.sidebar-nav-item, 
+.masthead-title,
+.sidebar-about h1,
+.button, .btn,
+.page-title, .post-title,
+.lead {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em; 
+}
+
+/* Ajuste fino para o título da Sidebar */
+.sidebar-about h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ajuste para o slogan/descrição na sidebar */
+.sidebar-about .lead {
+  font-family: 'Lora', serif; /* Mantém serifa para dar tom pessoal */
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Códigos: Fonte mono moderna */
+code, pre {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  background-color: #f7f9f8; /* Fundo levemente esverdeado off-white */
+}
