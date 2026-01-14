@@ -2,39 +2,27 @@
   /* --- PALETA "DIGITAL CANOPY" --- */
   
   /* Bases Neutras */
-  --bg-color: #f4f7f6;       /* Off-white com um toque de menta (papel digital) */
-  --card-bg: #ffffff;        /* Branco puro para cards */
-  --text-primary: #1a2e22;   /* Verde quase preto para leitura */
-  --text-secondary: #546e63; /* Cinza-esverdeado para meta-dados */
+  --bg-color: #051811;       /* Verde Profundo Quase Preto (Deep Forest) */
+  --card-bg: #0a261c;        /* Um tom acima para cards */
+  --text-primary: #e0e6e3;   /* Branco Gelo para leitura */
+  --text-secondary: #8b9c96; /* Cinza Musgo para metadados */
   
-  /* Cores de Marca */
-  --brand-primary: #052615;  /* Deep Forest (Sidebar e Footer) */
-  --brand-accent: #64ffda;   /* Tech Mint (Links, Botões, Destaques) */
-  --brand-gold: #d4af37;     /* Dourado Queimado (Detalhes sutis) */
+  /* Cores de Destaque */
+  --brand-primary: #1b4d3e;  /* Verde Institucional */
+  --brand-accent: #64ffda;   /* Verde Neon (Tech/Data) - A cor da "Matrix" florestal */
+  --brand-alert: #ff6b6b;    /* Para erros ou avisos */
   
-  /* Sistema de Bordas e Sombras */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-  --soft-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.1);
-  --neon-glow: 0 0 10px rgba(100, 255, 218, 0.3);
+  /* Efeitos de Vidro */
+  --glass-bg: rgba(10, 38, 28, 0.65);
+  --glass-border: 1px solid rgba(100, 255, 218, 0.1);
+  --blur-amt: 12px;
+  
+  /* Sombras */
+  --neon-glow: 0 0 10px rgba(100, 255, 218, 0.2);
+  --soft-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-  /* Tipografia (Já configurada no head, aqui definimos as vars) */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Lora', serif;
-  --font-code: 'Fira Code', 'Consolas', monospace;
-
-  /* Espaçamento */
-  --spacer: 1rem;
-  --sidebar-width: 18rem;
-  --border-radius: 8px;
-}
-
-/* Dark Mode Automático (Opcional, mas profissional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0a1912;
-    --card-bg: #112b1f;
-    --text-primary: #e6f1ed;
-    --text-secondary: #a8b2ad;
-    --brand-primary: #020d07;
-  }
+  /* Tipografia */
+  --font-heading: 'Montserrat', sans-serif; /* Geométrica, moderna */
+  --font-body: 'Lora', serif; /* Acadêmica, elegante para leitura longa */
+  --font-code: 'Fira Code', monospace;
 }
