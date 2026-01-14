@@ -499,3 +499,72 @@ code, pre {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* ==========================================================================
+   PROJECT CARDS - SATELLITE STYLE
+   ========================================================================== */
+
+/* A área da imagem do card */
+.card-img-top {
+  height: 160px;
+  width: 100%;
+  background-color: var(--brand-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de Scanline (Linha de varredura de satélite) */
+.card-img-top::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.1) 51%);
+  background-size: 100% 4px;
+}
+
+/* Variantes de "Imagens de Satélite" via CSS (Placeholder de Luxo) */
+.sat-ndvi {
+  /* Simula vegetação (Verde) vs Solo (Vermelho/Marrom) */
+  background: linear-gradient(45deg, #2e7d32, #66bb6a, #d4e157, #8d6e63);
+}
+
+.sat-false-color {
+  /* Simula Infravermelho (Vermelho intenso, ciano, cinza) */
+  background: linear-gradient(135deg, #b71c1c, #f44336, #4dd0e1, #263238);
+}
+
+.sat-sar {
+  /* Simula Radar/SAR (Preto e Branco ruidoso) */
+  background: repeating-radial-gradient(circle at 0 0, #212121, #424242 10px, #212121 20px);
+}
+
+.sat-thermal {
+  /* Simula calor (Laranja, Roxo, Preto) */
+  background: linear-gradient(to right, #21005d, #b0003a, #ff9800, #ffeb3b);
+}
+
+/* Ajuste fino no corpo do card */
+.project-card .project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Garante altura igual */
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  flex-grow: 1;
+}
+
+.tags-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
