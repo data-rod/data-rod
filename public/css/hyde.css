@@ -21,17 +21,8 @@ html {
  */
 
 /* ==========================================================================
-   SIDEBAR - GLASSMORPHIC DASHBOARD
+   SIDEBAR - COMPACT DASHBOARD FIX
    ========================================================================== */
-
-.sidebar {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: var(--brand-primary);
-  position: relative;
-  z-index: 100;
-}
 
 @media (min-width: 48em) {
   .sidebar {
@@ -64,7 +55,6 @@ html {
     display: none;
   }
 }
-
 /* Ajuste do layout principal para acomodar a sidebar flutuante */
 @media (min-width: 48em) {
   .content {
