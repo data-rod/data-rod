@@ -471,3 +471,70 @@ code, pre {
 .project-card:hover h3 {
   color: #64ffda;
 }
+/* ==========================================================================
+   CONTENT MODULES & CARDS
+   ========================================================================== */
+
+/* Hero Section (Intro da Home) */
+.hero-intro {
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Texto Gradiente */
+}
+
+/* Grid de Projetos (CSS Grid Moderno) */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--soft-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
+  border-color: var(--brand-accent);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-tag {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--brand-accent);
+  background: rgba(5, 38, 21, 0.9);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+/* Animação de Entrada */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
