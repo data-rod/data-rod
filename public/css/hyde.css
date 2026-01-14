@@ -343,3 +343,97 @@ code, pre {
   font-size: 0.9em;
   background-color: #f7f9f8; /* Fundo levemente esverdeado off-white */
 }
+/* ==========================================================================
+   PROJECTS GALLERY - SATELLITE CARDS
+   ========================================================================== */
+
+/* Container do Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsivo automático */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* O Cartão do Projeto */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #052615; /* Deep Forest (mesmo da sidebar) */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico sutil */
+  position: relative;
+  height: 100%;
+}
+
+/* Imagem do Projeto */
+.project-image {
+  height: 160px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(40%) contrast(110%); /* Look técnico */
+  transition: all 0.5s ease;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+/* Conteúdo do Cartão */
+.project-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Tags de Tecnologia (Python, GEE, etc) */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto; /* Empurra para o fundo */
+}
+
+.tech-tag {
+  font-family: 'Consolas', monospace;
+  font-size: 0.7rem;
+  color: #64ffda; /* Tech Mint */
+  background: rgba(100, 255, 218, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+/* --- EFEITOS DE INTERAÇÃO (HOVER) --- */
+
+.project-card:hover {
+  transform: translateY(-8px); /* Levita */
+  border-color: #64ffda; /* Borda acende */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.project-card:hover .project-image {
+  filter: grayscale(0%) contrast(100%);
+  height: 180px; /* Expande levemente a imagem */
+}
+
+.project-card:hover h3 {
+  color: #64ffda;
+}
