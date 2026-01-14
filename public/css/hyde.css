@@ -21,39 +21,73 @@ html {
  */
 
 /* ==========================================================================
-   SIDEBAR - ORGANIC TECH REDESIGN
+   SIDEBAR - GLASSMORPHIC DASHBOARD
    ========================================================================== */
 
 .sidebar {
   text-align: center;
-  padding: 1rem 0.5rem;
-  color: rgba(255,255,255,0.8); /* Texto mais brilhante para legibilidade */
-  background-color: #052615; /* Deep Forest: Um verde mais profundo e sério */
-  transition: background-color 0.3s ease;
+  padding: 2rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: var(--brand-primary);
+  position: relative;
+  z-index: 100;
 }
 
 @media (min-width: 48em) {
   .sidebar {
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 18rem;
-    text-align: left;
-    /* Adiciona uma sombra sutil à direita para separar do conteúdo */
-    box-shadow: 2px 0 20px rgba(0,0,0,0.4); 
+    top: 1rem;         /* Flutuante: não encosta no topo */
+    bottom: 1rem;      /* Flutuante: não encosta no rodapé */
+    left: 1rem;        /* Margem esquerda */
+    width: 16rem;      /* Largura mais elegante */
+    border-radius: 16px; /* Bordas arredondadas modernas */
+    
+    /* O Efeito Glassmorphism (Vidro Fosco) */
+    background: rgba(5, 38, 21, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    box-shadow: var(--soft-shadow);
+    border: 1px solid rgba(255,255,255,0.05); /* Borda sutil */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espalha conteúdo verticalmente */
   }
 }
 
-/* Links da Sidebar */
-.sidebar a {
-  color: #fff;
-  transition: color 0.2s ease;
-}
-.sidebar a:hover {
-  color: #64ffda; /* Tech Mint: Cor de destaque para interação */
+/* Ajuste do layout principal para acomodar a sidebar flutuante */
+@media (min-width: 48em) {
+  .content {
+    margin-left: 19rem; /* Compensação para a sidebar + margens */
+    margin-right: 2rem;
+    max-width: 55rem;   /* Aumenta a área de leitura */
+  }
 }
 
+/* Navegação com estilo de "Cápsula" */
+.sidebar-nav-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--brand-accent);
+  transform: translateX(5px); /* Move levemente para a direita */
+}
+
+.sidebar-nav-item.active {
+  background: rgba(100, 255, 218, 0.15);
+  color: var(--brand-accent);
+  font-weight: 700;
+  box-shadow: var(--neon-glow);
+}
 /* ==========================================================================
    PROFILE PICTURE
    ========================================================================== */
