@@ -264,3 +264,37 @@ a.sidebar-nav-item:focus {
     margin-right: 22rem;
   }
 }
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM - ORGANIC TECH
+   ========================================================================== */
+
+/* Corpo do texto: Lora para leitura confortável e acadêmica */
+html, body, p, li {
+  font-family: 'Lora', serif;
+  line-height: 1.7; /* Aumenta um pouco o respiro para leitura técnica */
+}
+
+/* Títulos e Interface: Montserrat para modernidade e precisão */
+h1, h2, h3, h4, h5, h6, 
+.sidebar-nav-item, 
+.masthead-title,
+.sidebar-about h1,
+.button, .btn {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em; /* Aproxima levemente as letras para um look mais "título" */
+}
+
+/* Ajuste específico para o título principal na Sidebar */
+.sidebar-about h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; /* Espaçamento "cinematográfico" para o nome */
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Opcional: Códigos com fonte mono mais moderna se disponível */
+code, pre {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+}
