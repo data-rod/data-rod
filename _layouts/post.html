@@ -2,24 +2,48 @@
 layout: default
 ---
 
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
-</div>
+<article class="post-container">
+  
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="meta-item">📅 {{ page.date | date: "%d %b %Y" }}</span>
+      <span class="meta-item">⏱️ {{ content | number_of_words | divided_by: 180 | plus: 1 }} min read</span>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.tags %}
+    <div class="post-tags-header">
+      {% for tag in page.tags %}
+        <span class="tech-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <div class="post-footer">
+    <p>— Fim da Transmissão —</p>
+    <div class="share-links">
+      <span>Compartilhar dados:</span>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}" target="_blank">Twitter</a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ site.baseurl }}{{ page.url }}" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+</article>
+
+<div class="related-section">
+  <h3>Arquivos Relacionados</h3>
+  <div class="project-grid">
+    {% for post in site.related_posts limit:2 %}
+      <div class="project-card" style="height: auto;">
+        <div class="project-content">
+          <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+          <p style="font-size: 0.85rem; margin-bottom: 0;">{{ post.date | date_to_string }}</p>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
