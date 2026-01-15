@@ -4,50 +4,73 @@ title: Home
 ---
 
 <div class="hero-intro">
-  <h1 class="hero-title">Decodificando a<br>Paisagem Natural.</h1>
+  <h1 class="hero-title">Inteligência Geoespacial <br> & Análise Ambiental.</h1>
   <p class="lead">
-    Sou Rodrigo Neto, Engenheiro Florestal e Cientista de Dados. 
-    Transformo pixels de satélite em inteligência ambiental e poesia.
+    Olá, sou <strong style="color:var(--text-primary)">Rodrigo Neto</strong>. 
+    Engenheiro Florestal e Cientista de Dados transformando pixels orbitais em decisões estratégicas.
   </p>
   
-  <div style="margin-top: 2rem;">
+  <div style="margin-top: 2rem; display: flex; gap: 1rem;">
     <a href="{{ site.baseurl }}/projetos/" class="sidebar-nav-item" 
-       style="display:inline-block; background:var(--brand-primary); color:white; margin-right:1rem;">
-       Ver Projetos
+       style="background:rgba(100, 255, 218, 0.1); color:var(--brand-accent); border: 1px solid var(--brand-accent);">
+       Explorar Projetos
     </a>
     <a href="{{ site.baseurl }}/sobre/" class="sidebar-nav-item" 
-       style="display:inline-block; border:1px solid var(--text-primary); color:var(--text-primary);">
-       Sobre Mim
+       style="border:1px solid var(--text-secondary); color:var(--text-secondary);">
+       Perfil Técnico
     </a>
   </div>
 </div>
 
-<section id="gis" style="margin-top: 4rem;">
-    <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:1rem;">
-        <h2 style="margin:0;">Laboratório Geoespacial</h2>
-        <span class="project-tag">LIVE APP</span>
-    </div>
-    
-    <p>Ferramenta interativa para análise espectral em tempo real.</p>
-    
-    <div style="border-radius: 12px; overflow: hidden; box-shadow: var(--soft-shadow); border: 1px solid #ddd;">
-        <iframe src="https://britonetorl.users.earthengine.app/view/tst01" 
-                width="100%" height="600px" style="border:none; display:block;">
-        </iframe>
-    </div>
-</section>
+<section>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+    <h2 style="margin:0; font-size:1.5rem;">Deployment Recente</h2>
+    <a href="{{ site.baseurl }}/projetos/" style="font-size:0.9rem; font-family:var(--font-code);">Ver todos →</a>
+  </div>
 
-<section style="margin-top: 4rem;">
-  <h3>Últimas do Blog</h3>
   <div class="project-grid">
-    {% for post in site.posts limit:2 %}
+    
     <div class="project-card">
-        <div class="project-content">
-            <span class="post-date">{{ post.date | date_to_string }}</span>
-            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      <div class="card-visual vis-ndvi"></div>
+      <div class="card-content">
+        <h3><a href="#">Monitoramento de Biomassa</a></h3>
+        <p>Pipeline ETL automatizado para cálculo de estoque de carbono utilizando séries temporais Sentinel-2.</p>
+        <div class="card-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">GEE</span>
+          <span class="tech-tag">ETL</span>
         </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-visual vis-sar"></div>
+      <div class="card-content">
+        <h3><a href="#">Detecção de Desmatamento (SAR)</a></h3>
+        <p>Algoritmo de Deep Learning aplicado a dados de radar (Sentinel-1) para alertas em tempo quase-real.</p>
+        <div class="card-tags">
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">SAR</span>
+          <span class="tech-tag">CNN</span>
+        </div>
+      </div>
+    </div>
+
+    {% for post in site.posts limit:1 %}
+    <div class="project-card" style="border-color: var(--text-secondary);">
+      <div class="card-visual vis-code">
+        <span>{ }</span>
+      </div>
+      <div class="card-content">
+        <span style="font-family:var(--font-code); font-size:0.7rem; color:var(--brand-accent); display:block; margin-bottom:0.5rem;">LATEST LOG</span>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
+        <div class="card-tags">
+          <span class="tech-tag">Article</span>
+        </div>
+      </div>
     </div>
     {% endfor %}
+
   </div>
 </section>
