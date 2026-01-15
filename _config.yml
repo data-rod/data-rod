@@ -1,43 +1,48 @@
-# Dependencies
-markdown:         kramdown  # Use kramdown as the markdown processor
-highlighter:      pygments
-
-plugins:
-  - jekyll-paginate
-
-# Permalinks
-permalink:        pretty
-
-
 # Setup
 title:            Spatial Data Forest
-tagline:          'Data Analysis'
-description:      'Analise de dados espaciais em Ciências Florestais.'
-url:              https://github.com/data-rod/data-rod
-baseurl:          /data-rod/
+tagline:          'Intelligence from Above'
+description:      'Engenharia Florestal, Sensoriamento Remoto e Data Science transformados em insights.'
+url:              https://britonetorl.github.io # Ajuste conforme seu domínio final
+baseurl:          /data-rod
 
 author:
   name:           'Rodrigo Neto'
-  url:            https://twitter.com/data.rod
+  email:          'seu-email@exemplo.com'
+  url:            https://github.com/data-rod
 
+# Build settings
+markdown:         kramdown
+highlighter:      rouge
+permalink:        pretty
 paginate:         5
 
-# Custom vars
-version:          2.1.0
+# Plugins (Nativos do GitHub Pages)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-gist
 
-github:
-  repo:           https://github.com/data-rod/data-rod
-
+# Collections (Define tipos de conteúdo além de posts)
 collections:
-  blog:
-    output: true
-    permalink: blog/:year/:month/:day/:name/
   projetos:
     output: true
-    permalink: projetos/:name/
+    permalink: /projetos/:path/
   tutoriais:
     output: true
-    permalink: tutoriais/:name/
+    permalink: /tutoriais/:path/
   sobre:
     output: true
-    permalink: sobre/:name/
+    permalink: /sobre/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projetos"
+    values:
+      layout: "page" # Criaremos um layout específico depois
