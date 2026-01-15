@@ -421,3 +421,91 @@ a:hover {
   border-radius: 4px;
   border: 1px solid rgba(100, 255, 218, 0.2);
 }
+/* ==========================================================================
+   6. POST & PAGE INTERNALS
+   ========================================================================== */
+
+.post-header, .page-header {
+  margin-bottom: 2.5rem;
+}
+
+.post-meta {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--brand-accent);
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.post-tags-header {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.post-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--text-secondary);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.share-links {
+  margin-top: 1rem;
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+}
+
+.share-links a {
+  margin: 0 0.5rem;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. MOBILE MENU TWEAKS
+   ========================================================================== */
+
+/* Botão Mobile */
+.mobile-menu-btn {
+  display: none; /* Escondido no Desktop */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--card-bg);
+  color: var(--brand-accent);
+  border: 1px solid var(--brand-accent);
+  border-radius: 4px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 200;
+}
+
+@media (max-width: 48em) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* Esconde o conteúdo da sidebar por padrão no mobile */
+  .sidebar-container {
+    display: none; 
+    margin-top: 4rem; /* Espaço para o botão */
+    background: var(--bg-color); /* Fundo sólido para leitura */
+    width: 100%;
+    padding: 2rem;
+    border-bottom: 1px solid var(--brand-accent);
+  }
+
+  /* Mostra quando ativo via JS */
+  .sidebar-container.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
