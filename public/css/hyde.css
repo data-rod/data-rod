@@ -1,570 +1,294 @@
-html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-}
-@media (min-width: 48em) {
-  html {
-    font-size: 16px;
-  }
-}
-@media (min-width: 58em) {
-  html {
-    font-size: 20px;
-  }
-}
-
-
 /*
- * Sidebar
- *
- * Flexible banner for housing site name, intro, and "footer" content. Starts
- * out above content in mobile and later moves to the side with wider viewports.
+ * Orbital Dashboard Layout Engine
+ * Baseado no Hyde, mas totalmente refatorado para Glassmorphism
  */
 
 /* ==========================================================================
-   SIDEBAR - COMPACT DASHBOARD FIX
+   1. ESTRUTURA GLOBAL E RESET
    ========================================================================== */
 
+html, body {
+  height: 100%;
+  background-color: var(--bg-color); /* Fundo Deep Forest */
+  color: var(--text-primary);
+  overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
+/* ==========================================================================
+   2. SIDEBAR (O Painel de Controle)
+   ========================================================================== */
+
+.sidebar {
+  background-color: var(--bg-color); /* Fallback para mobile */
+  padding: 2rem 1rem;
+  text-align: center;
+  z-index: 100;
+}
+
+/* Estilo Mobile (Padrão) */
+@media (max-width: 48em) {
+  .sidebar {
+    border-bottom: 1px solid var(--border-color);
+  }
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Estilo Desktop (Floating Glass) */
 @media (min-width: 48em) {
   .sidebar {
     position: fixed;
-    top: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    width: 17rem; /* Levemente mais larga para o título caber melhor */
-    border-radius: 16px;
-    
-    background: rgba(5, 38, 21, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    box-shadow: var(--soft-shadow);
-    border: 1px solid rgba(255,255,255,0.05);
-    
+    top: 2rem;
+    bottom: 2rem;
+    left: 2rem;
+    width: var(--sidebar-width);
+    padding: 0;
+    background: transparent; /* Remove cor sólida */
+  }
+
+  .sidebar-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* CORREÇÃO: Agrupa itens no topo */
-    gap: 1rem; /* Espaçamento consistente e menor entre blocos */
+    justify-content: space-between;
     
-    overflow-y: auto; /* Permite rolar se a tela for pequena */
-    scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
-    padding: 1.5rem 1rem; /* Padding reduzido verticalmente */
-  }
-  
-  /* Esconde barra de rolagem no Chrome/Safari/Edge */
-  .sidebar::-webkit-scrollbar {
-    display: none;
-  }
-}
-/* Ajuste do layout principal para acomodar a sidebar flutuante */
-@media (min-width: 48em) {
-  .content {
-    margin-left: 19rem; /* Compensação para a sidebar + margens */
-    margin-right: 2rem;
-    max-width: 55rem;   /* Aumenta a área de leitura */
+    /* O Efeito de Vidro */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amt));
+    -webkit-backdrop-filter: blur(var(--blur-amt));
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--soft-shadow);
+    
+    /* Scroll interno se a tela for muito baixa */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-primary) transparent;
   }
 }
 
-/* Navegação com estilo de "Cápsula" */
+/* --- Componentes da Sidebar --- */
+
+/* Avatar */
+.profile-avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--brand-accent);
+  box-shadow: var(--neon-glow);
+  transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover img {
+  transform: scale(1.05);
+}
+
+/* Indicador Online (Ponto Verde) */
+.status-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  border: 2px solid var(--card-bg);
+  box-shadow: 0 0 5px #00ff00;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(0, 255, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+}
+
+/* Títulos */
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.site-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.site-tagline {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Navegação */
+.sidebar-nav {
+  margin: 2rem 0;
+  text-align: left;
+  width: 100%;
+}
+
 .sidebar-nav-item {
   display: block;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem 0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
   border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
+  font-family: var(--font-heading);
   font-weight: 500;
-  letter-spacing: 0.5px;
+  border: 1px solid transparent;
 }
 
 .sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--brand-accent);
+  transform: translateX(5px);
+  text-decoration: none;
+}
+
+.sidebar-nav-item.active {
   background: rgba(100, 255, 218, 0.1);
   color: var(--brand-accent);
-  transform: translateX(5px); /* Move levemente para a direita */
-}
-
-.sidebar-nav-item.active {
-  background: rgba(100, 255, 218, 0.15);
-  color: var(--brand-accent);
+  border-color: rgba(100, 255, 218, 0.2);
   font-weight: 700;
-  box-shadow: var(--neon-glow);
-}
-/* ==========================================================================
-   PROFILE PICTURE
-   ========================================================================== */
-
-.profile-picture {
-  width: 110px; /* Reduzido de 160px para 110px - Muito mais elegante */
-  height: 110px;
-  margin: 0 auto 0.5rem auto; /* Margem inferior reduzida */
-  padding: 3px;
-  border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  flex-shrink: 0; /* Impede que a foto amasse em telas pequenas */
 }
 
-.profile-picture img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; /* Garante que a imagem siga o container */
-  object-fit: cover; /* A mágica: corta a imagem proporcionalmente sem distorcer */
-  margin: 0; /* Remove margens residuais */
-  filter: grayscale(20%); /* Um toque artístico leve */
-  transition: all 0.4s ease;
-}
-
-/* Efeito de Hover na foto */
-.profile-picture:hover {
-  border-color: #64ffda; /* A borda brilha em verde menta */
-  box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
-}
-
-.profile-picture:hover img {
-  filter: grayscale(0%);
-  transform: scale(1.05); /* Zoom sutil */
-}
-
-/* About section */
-.sidebar-about h1 {
-  text-align: center;
-  color: #fff;
-  margin-top: 0;
-  font-family: "Abril Fatface", serif;
-  font-size: 2rem;  
-}
-
-/* Centralizar descrição do site na barra lateral */
-.sidebar-about .lead {
-  text-align: center; /* Centraliza o texto horizontalmente */
-  font-size: 1.1rem;
-  margin-top: 20px; /* Adjust the top margin as needed */
-  margin-bottom: 10px; /* Adjust the bottom margin as needed */
-}
-
-
-/* Sidebar nav */
-.sidebar-nav {
-  margin-bottom: 0; /* Remove margem forçada */
-  width: 100%;
-}
-
-.sidebar-nav-item {
-  padding: 0.4rem 0.8rem; /* Itens mais compactos */
-  font-size: 0.95rem;
-}
-
-a.sidebar-nav-item:hover,
-a.sidebar-nav-item:focus {
-  text-decoration: underline;
-}
-.sidebar-nav-item.active {
-  font-weight: bold;
-}
-
-
-/* Empurra Social e Audio para o final do container */
-.social-media {
-  margin-top: auto; /* A MÁGICA: Isso empurra tudo abaixo para o fundo */
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.social-media-icon {
+.nav-icon {
   display: inline-block;
-  margin: 0 0.5rem;
+  width: 20px;
+  text-align: center;
+  margin-right: 8px;
+  opacity: 0.7;
 }
 
-.social-media-icon img {
-  width: 24px; /* Ajuste o tamanho conforme necessário */
-  height: 24px; /* Ajuste o tamanho conforme necessário */
-  filter: brightness(0) invert(1); /* Para que os ícones sejam brancos */
+/* Rodapé e Social */
+.sidebar-footer {
+  margin-top: auto;
 }
 
-.social-media-icon:hover img,
-.social-media-icon:focus img {
-  filter: brightness(0.7) invert(1); /* Efeito de hover */
-}
-
-/* ==========================================================================
-   AUDIO PLAYER - FUTURISTIC UI
-   ========================================================================== */
-
-.audio-player {
-  margin-top: 0.5rem;
-  padding: 0;
-  border: none;
-}
-
-.controls {
+.social-links {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.audio-button {
-  background-color: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff;
-  padding: 6px 16px;
-  font-size: 0.8rem;
-  font-family: inherit;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.social-links img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1) brightness(2); /* Torna ícones brancos */
+  transition: opacity 0.2s;
+  margin: 0;
+}
+
+.social-links a:hover img {
+  opacity: 0.7;
+}
+
+.copyright {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+}
+
+/* --- Audio Player (Compacto) --- */
+.audio-control-panel {
+  background: rgba(0,0,0,0.2);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.player-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
   cursor: pointer;
-  border-radius: 20px; /* Pílulas arredondadas */
-  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  transition: color 0.2s;
 }
 
-.audio-button:hover,
-.audio-button:focus {
-  background-color: rgba(100, 255, 218, 0.1); /* Fundo verde transparente */
-  border-color: #64ffda;
-  color: #64ffda;
-  box-shadow: 0 0 8px rgba(100, 255, 218, 0.3);
+.player-btn:hover {
+  color: var(--brand-accent);
 }
 
-
-/* Sticky sidebar
- *
- * Add the `sidebar-sticky` class to the sidebar's container to affix it the
- * contents to the bottom of the sidebar in tablets and up.
- */
-
-@media (min-width: 48em) {
-  .sidebar-sticky {
-    position: absolute;
-    right:  1rem;
-    bottom: 1rem;
-    left:   1rem;
-  }
+.play-main {
+  font-size: 1.5rem;
+  color: var(--text-primary);
 }
 
-
-/* Container
- *
- * Align the contents of the site above the proper threshold with some margin-fu
- * with a 25%-wide `.sidebar`.
- */
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL (Main Stage)
+   ========================================================================== */
 
 .content {
-  padding-top:    4rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
+  animation: fadeIn 1s ease-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes de margem para o Sidebar Fixo */
 @media (min-width: 48em) {
   .content {
-    max-width: 38rem;
-    margin-left: 20rem;
+    margin-left: calc(var(--sidebar-width) + 4rem); /* 18rem largura + 2rem left + 2rem gap */
     margin-right: 2rem;
+    max-width: 60rem; /* Área de leitura mais larga */
   }
 }
 
 @media (min-width: 64em) {
   .content {
-    margin-left: 22rem;
     margin-right: 4rem;
   }
 }
 
-
-/*
- * Reverse layout
- *
- * Flip the orientation of the page by placing the `.sidebar` on the right.
- */
-
-@media (min-width: 48em) {
-  .layout-reverse .sidebar {
-    left: auto;
-    right: 0;
-  }
-  .layout-reverse .content {
-    margin-left: 2rem;
-    margin-right: 20rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .layout-reverse .content {
-    margin-left: 4rem;
-    margin-right: 22rem;
-  }
-}
-
 /* ==========================================================================
-   TYPOGRAPHY SYSTEM - ORGANIC TECH
+   4. TIPOGRAFIA DO CONTEÚDO
    ========================================================================== */
 
-/* Corpo do texto: Lora para leitura confortável e acadêmica */
-html, body, p, li, .post-date, .related-posts small {
-  font-family: 'Lora', serif;
-  line-height: 1.75; /* Respiro aumentado para elegância */
-}
-
-/* Títulos e Interface: Montserrat para modernidade e precisão */
-h1, h2, h3, h4, h5, h6, 
-.sidebar-nav-item, 
-.masthead-title,
-.sidebar-about h1,
-.button, .btn,
-.page-title, .post-title,
-.lead {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.02em; 
-}
-
-/* Ajuste do Título para não quebrar tanto */
-.sidebar-about h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 1.4rem; /* Reduzido para caber melhor */
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.sidebar-about .lead {
-  font-size: 0.9rem; /* Descrição levemente menor */
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-/* Códigos: Fonte mono moderna */
-code, pre {
-  font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 0.9em;
-  background-color: #f7f9f8; /* Fundo levemente esverdeado off-white */
-}
-/* ==========================================================================
-   PROJECTS GALLERY - SATELLITE CARDS
-   ========================================================================== */
-
-/* Container do Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsivo automático */
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-/* O Cartão do Projeto */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #052615; /* Deep Forest (mesmo da sidebar) */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico sutil */
-  position: relative;
-  height: 100%;
-}
-
-/* Imagem do Projeto */
-.project-image {
-  height: 160px;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(40%) contrast(110%); /* Look técnico */
-  transition: all 0.5s ease;
-  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-}
-
-/* Conteúdo do Cartão */
-.project-content {
-  padding: 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.project-card p {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  flex-grow: 1;
-}
-
-/* Tags de Tecnologia (Python, GEE, etc) */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto; /* Empurra para o fundo */
-}
-
-.tech-tag {
-  font-family: 'Consolas', monospace;
-  font-size: 0.7rem;
-  color: #64ffda; /* Tech Mint */
-  background: rgba(100, 255, 218, 0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid rgba(100, 255, 218, 0.2);
-}
-
-/* --- EFEITOS DE INTERAÇÃO (HOVER) --- */
-
-.project-card:hover {
-  transform: translateY(-8px); /* Levita */
-  border-color: #64ffda; /* Borda acende */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
-
-.project-card:hover .project-image {
-  filter: grayscale(0%) contrast(100%);
-  height: 180px; /* Expande levemente a imagem */
-}
-
-.project-card:hover h3 {
-  color: #64ffda;
-}
-/* ==========================================================================
-   CONTENT MODULES & CARDS
-   ========================================================================== */
-
-/* Hero Section (Intro da Home) */
-.hero-intro {
-  padding: 3rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  margin-bottom: 3rem;
-  animation: fadeUp 0.8s ease-out;
-}
-
-.hero-title {
-  font-size: 3rem;
+.page-title, .post-title {
+  font-family: var(--font-heading);
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Texto Gradiente */
-}
-
-/* Grid de Projetos (CSS Grid Moderno) */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.project-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--soft-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
-  border-color: var(--brand-accent);
-}
-
-.project-content {
-  padding: 1.5rem;
-}
-
-.project-tag {
-  font-family: var(--font-code);
-  font-size: 0.75rem;
-  color: var(--brand-accent);
-  background: rgba(5, 38, 21, 0.9);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  margin-right: 0.5rem;
-}
-
-/* Animação de Entrada */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ==========================================================================
-   PROJECT CARDS - SATELLITE STYLE
-   ========================================================================== */
-
-/* A área da imagem do card */
-.card-img-top {
-  height: 160px;
-  width: 100%;
-  background-color: var(--brand-primary);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Efeito de Scanline (Linha de varredura de satélite) */
-.card-img-top::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.1) 51%);
-  background-size: 100% 4px;
-}
-
-/* Variantes de "Imagens de Satélite" via CSS (Placeholder de Luxo) */
-.sat-ndvi {
-  /* Simula vegetação (Verde) vs Solo (Vermelho/Marrom) */
-  background: linear-gradient(45deg, #2e7d32, #66bb6a, #d4e157, #8d6e63);
-}
-
-.sat-false-color {
-  /* Simula Infravermelho (Vermelho intenso, ciano, cinza) */
-  background: linear-gradient(135deg, #b71c1c, #f44336, #4dd0e1, #263238);
-}
-
-.sat-sar {
-  /* Simula Radar/SAR (Preto e Branco ruidoso) */
-  background: repeating-radial-gradient(circle at 0 0, #212121, #424242 10px, #212121 20px);
-}
-
-.sat-thermal {
-  /* Simula calor (Laranja, Roxo, Preto) */
-  background: linear-gradient(to right, #21005d, #b0003a, #ff9800, #ffeb3b);
-}
-
-/* Ajuste fino no corpo do card */
-.project-card .project-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* Garante altura igual */
-}
-
-.project-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
   color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
-.project-card p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  flex-grow: 1;
+/* Links no texto */
+a {
+  color: var(--brand-accent);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border 0.2s;
 }
 
-.tags-container {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+a:hover {
+  border-bottom-color: var(--brand-accent);
 }
