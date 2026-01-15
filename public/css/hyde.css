@@ -292,3 +292,132 @@ a {
 a:hover {
   border-bottom-color: var(--brand-accent);
 }
+/* ... (Mantenha o código anterior da Parte 2 acima disso) ... */
+
+/* ==========================================================================
+   4. HOME & DASHBOARD MODULES
+   ========================================================================== */
+
+/* Hero Section (Boas-vindas) */
+.hero-intro {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-title {
+  font-size: 3rem;
+  background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Texto Gradiente */
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   5. PROJECT CARDS (Satellite Tiles)
+   ========================================================================== */
+
+/* Grid Responsivo */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* O Card em si */
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Interação (Hover) */
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-color: var(--brand-accent);
+}
+
+/* Topo do Card (Imagem/Visualização) */
+.card-visual {
+  height: 140px;
+  width: 100%;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de Scanline (Varredura de Satélite) */
+.card-visual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 3px
+  );
+  pointer-events: none;
+}
+
+/* Placeholders de "Sensor Remoto" via CSS */
+.vis-ndvi { background: linear-gradient(45deg, #2e7d32, #8bc34a, #d4e157); } /* Vegetação */
+.vis-sar  { background: repeating-radial-gradient(circle, #212121, #424242 5px, #212121 20px); } /* Radar */
+.vis-fire { background: linear-gradient(to top, #212121, #b71c1c, #ff5722); } /* Fogo */
+.vis-code { background: #0d1117; display: flex; align-items: center; justify-content: center; color: var(--brand-accent); font-family: var(--font-code); font-size: 2rem; }
+
+/* Corpo do Card */
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.card-content h3 a {
+  color: var(--text-primary);
+}
+
+.card-content h3 a:hover {
+  color: var(--brand-accent);
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Tags de Tecnologia */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tech-tag {
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  color: var(--brand-accent);
+  background: rgba(100, 255, 218, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
