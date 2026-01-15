@@ -1,3 +1,5 @@
+// Variáveis Globais e Design Tokens
+
 :root {
   /* --- PALETA "DIGITAL CANOPY" --- */
   
@@ -25,4 +27,19 @@
   --font-heading: 'Montserrat', sans-serif; /* Geométrica, moderna */
   --font-body: 'Lora', serif; /* Acadêmica, elegante para leitura longa */
   --font-code: 'Fira Code', monospace;
+  
+  /* Espaçamentos e Layout */
+  --sidebar-width: 18rem;
+  --spacer: 1rem;
+  --spacer-2: 2rem;
+  --spacer-3: 3rem;
+  --border-radius: 12px;
 }
+
+// Compatibilidade com variáveis antigas do Poole (para não quebrar tudo de imediato)
+$body-bg: var(--bg-color);
+$body-color: var(--text-primary);
+$headings-color: var(--text-primary);
+$link-color: var(--brand-accent);
+$link-hover-color: lighten(#64ffda, 10%);
+$border-color: rgba(255,255,255,0.1);
