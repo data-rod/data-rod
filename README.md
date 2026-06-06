@@ -16,7 +16,7 @@ My work connects forest science, spatial data, and reproducible analytical workf
 - Python and R for data processing, modeling, and visualization
 - GIS and geoprocessing workflows
 - Machine learning applied to geospatial and environmental data
-- Scientific documentation and organized project repositories
+- Scientific documentation
 
 ## Current Direction
 
