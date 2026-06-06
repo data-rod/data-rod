@@ -1,5 +1,3 @@
-# Hi, I am Rodrigo Lacerda
-
 I am a Forest Engineer and Ph.D. researcher focused on remote sensing, geospatial analysis, environmental data science, and the management of natural landscapes.
 
 My work connects forest science, spatial data, and reproducible analytical workflows to better understand vegetation dynamics, land use patterns, and environmental change.
