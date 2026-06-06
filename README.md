@@ -1,17 +1,27 @@
+# Hi, I am Rodrigo Lacerda
 
----
+I am a Forest Engineer and Ph.D. researcher focused on remote sensing, geospatial analysis, environmental data science, and the management of natural landscapes.
 
-Forest engineering, Ph.D. with a focus on remote sensing and environmental analysis. I'm interested in developing models for geospatial data analysis and natural landscapes management.
+My work connects forest science, spatial data, and reproducible analytical workflows to better understand vegetation dynamics, land use patterns, and environmental change.
 
-## Education
-- Ph.D. in Forest Science 
-- M.Sc. in Forest Science
-- B.Sc. in Forest Engineering 
+## Main Interests
 
-## Projects
-- **Geospatial Data Modeling:** Developing model for analyzing land use patterns in forested areas.
-- **Analysis of Forest Habitat Persistence:** Study on the persistence of forest habitats in temporal series of satellite images.
+- Remote sensing and satellite image analysis
+- Geospatial data modeling and spatial statistics
+- Environmental monitoring and land use change
+- Forest landscapes, vegetation dynamics, and habitat persistence
+- Reproducible workflows for environmental research
 
-Feel free to reach out to me to discuss collaborations or interesting projects in the field of remote sensing and environmental analysis!
+## Technical Focus
 
----
+- Google Earth Engine for large-scale environmental analysis
+- Python and R for data processing, modeling, and visualization
+- GIS and geoprocessing workflows
+- Machine learning applied to geospatial and environmental data
+- Scientific documentation and organized project repositories
+
+## Current Direction
+
+I am interested in building practical and reproducible tools for environmental analysis, with emphasis on remote sensing, forest systems, and data-driven decision support.
+
+Feel free to reach out if you are interested in remote sensing, geospatial analysis, environmental modeling, or collaborative research.
